@@ -7,12 +7,12 @@ const characterController = require("../controllers/characterController.js")
 router.get("/", characterController.index)
 
 //Show
-router.get("/", characterController.show)
+router.get("/:id", characterController.show)
 
 //Store
 router.post("/", characterController.store)
 
 //Destroy
-router.delete("/", characterController.destroy)
+router.delete("/:id", characterController.destroy)
 
 module.exports = router
