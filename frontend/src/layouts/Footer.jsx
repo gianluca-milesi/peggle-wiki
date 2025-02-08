@@ -1,6 +1,6 @@
 function Footer() {
     return (
-        <div>a</div>
+        <footer>a</footer>
     )
 }
 

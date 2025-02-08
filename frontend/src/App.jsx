@@ -6,7 +6,7 @@ import BlankLayout from "./layouts/BlankLayout"
 //Pages
 import NotFoundPage from "./pages/NotFoundPage.jsx"
 import HomePage from "./pages/HomePage"
-import SearchCharacterPage from "./pages/SearchCharacterPage.jsx"
+import CharactersPage from "./pages/CharactersPage.jsx"
 import DetailCharacterPage from "./pages/DetailCharacterPage.jsx"
 
 
@@ -17,7 +17,7 @@ function App() {
       <Routes>
         <Route element={<DefaultLayout />}>
           <Route path="/" element={<HomePage />} />
-          <Route path="/search" element={<SearchCharacterPage />} />
+          <Route path="/characters" element={<CharactersPage />} />
           <Route path="/:id" element={<DetailCharacterPage />} />
         </Route>
         <Route element={<BlankLayout />}>

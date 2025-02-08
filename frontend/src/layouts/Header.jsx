@@ -1,6 +1,12 @@
+//Components
+import Navbar from "../components/Navbar"
+
+
 function Header() {
     return (
-        <div>a</div>
+        <header className="py-2 px-6">
+            <Navbar />
+        </header>
     )
 }
 

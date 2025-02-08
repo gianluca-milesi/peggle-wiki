@@ -1,6 +1,10 @@
+//Hooks
+import { Outlet } from "react-router-dom"
+
+
 function BlankLayout() {
     return (
-        <div>a</div>
+        <Outlet />
     )
 }
 
