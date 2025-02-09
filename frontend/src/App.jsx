@@ -1,5 +1,10 @@
+import axios from "axios"
 //React router dom
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+//Contexts
+import GlobalContext from "./contexts/globalContext.js"
+//Hooks
+import { useEffect, useState } from "react"
 //Layouts
 import DefaultLayout from "./layouts/DefaultLayout"
 import BlankLayout from "./layouts/BlankLayout"
@@ -12,19 +17,38 @@ import DetailCharacterPage from "./pages/DetailCharacterPage.jsx"
 
 function App() {
 
+  const [characters, setCharacters] = useState([])
+
+  function fetchCharacters() {
+    axios.get("http://localhost:3000/api/characters")
+      .then((res) => {
+        setCharacters(res.data)
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  }
+
+  useEffect(() => {
+    fetchCharacters()
+  }, [])
+
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<DefaultLayout />}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/characters" element={<CharactersPage />} />
-          <Route path="/:id" element={<DetailCharacterPage />} />
-        </Route>
-        <Route element={<BlankLayout />}>
-          <Route path="*" element={<NotFoundPage />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <GlobalContext.Provider value={{ characters }}>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<DefaultLayout />}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/characters" element={<CharactersPage />} />
+            <Route path="/:id" element={<DetailCharacterPage />} />
+          </Route>
+          <Route element={<BlankLayout />}>
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </GlobalContext.Provider>
   )
 }
 

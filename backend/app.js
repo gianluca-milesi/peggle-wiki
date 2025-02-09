@@ -2,6 +2,9 @@ const express = require("express")
 const app = express()
 const PORT = 3000
 
+const cors = require("cors")
+app.use(cors({ origin: process.env.CORS_ORIGIN }))
+
 app.use(express.static("public"))
 
 const characterRouter = require("./routers/characterRouter.js")
