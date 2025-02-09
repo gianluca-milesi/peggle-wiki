@@ -1,6 +1,8 @@
+import HeroHome from "../components/HeroHome/HeroHome"
+
 function HomePage() {
     return (
-        <div>Home page</div>
+        <HeroHome />
     )
 }
 

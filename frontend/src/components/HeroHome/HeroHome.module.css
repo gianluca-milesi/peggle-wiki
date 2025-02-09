@@ -1,0 +1,28 @@
+.hero {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    padding: 2rem;
+    background-image: url(../../../public/herohome.jpg);
+    background-size: cover;
+    background-position: center 55%;
+    position: relative;
+    transform: scaleX(-1);
+}
+
+.hero::before {
+    content: "";
+    background-color: #000000b0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.headline{
+    position: relative;
+    z-index: 10;
+    transform: scaleX(-1);
+}
