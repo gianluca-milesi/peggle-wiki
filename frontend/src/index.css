@@ -32,3 +32,40 @@
 .color-tertiary {
     color: var(--tertiary-color);
 }
+
+
+/* LAYOUT */
+.container {
+    width: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.col {
+    flex: 1 1 0%;
+    padding: 0 15px;
+}
+
+.col-4 {
+    flex: 0 0 33.33%;
+}
+
+.col-6 {
+    flex: 0 0 50%;
+}
+
+.col-12 {
+    flex: 0 0 100%;
+}
+
+.row>.col {
+    padding-left: 15px;
+    padding-right: 15px;
+}
