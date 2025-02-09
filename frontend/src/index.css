@@ -49,20 +49,19 @@
 }
 
 .col {
-    flex: 1 1 0%;
     padding: 0 15px;
 }
 
 .col-4 {
-    flex: 0 0 33.33%;
+    width: 33%;
 }
 
 .col-6 {
-    flex: 0 0 50%;
+    width: 50%;
 }
 
 .col-12 {
-    flex: 0 0 100%;
+    width: 100%;
 }
 
 .row>.col {

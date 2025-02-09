@@ -22,7 +22,7 @@ function HomePage() {
                 <div className="container">
                     <div className="row">
                         {characters && characters.slice(0, 4).map(character => (
-                            <div className="col-12" key={character.id}>
+                            <div className="col-6" key={character.id}>
                                 <CardCharacter item={character} />
                             </div>
                         ))}

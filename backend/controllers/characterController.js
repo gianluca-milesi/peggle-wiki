@@ -10,6 +10,10 @@ function index(req, res) {
         `
 
     connection.query(sql, (err, results) => {
+        results.forEach((character) => {
+            character.image = `${process.env.BE_HOST}/CharactersImg/${character.image}`
+        })
+
         if (err) {
             res.status(500).json({ message: err.message })
         }

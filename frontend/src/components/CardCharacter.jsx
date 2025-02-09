@@ -1,10 +1,10 @@
 function CardCharacter({ item = {} }) {
 
-    const { name, description, power } = item
+    const { image, name, description, power } = item
 
     return (
-        <div className="card flex">
-            <img src="..." />
+        <div className="card flex bg-tertiary m-2">
+            <img src={image} />
             <div className="card-body p-2">
                 <h3>{name}</h3>
                 <p>{description}</p>
