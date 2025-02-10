@@ -1,5 +1,5 @@
 //Contexts
-import GlobalContext from "../contexts/globalContext"
+import GlobalContext from "../contexts/GlobalContext.js"
 //Hooks
 import { useContext } from "react"
 //Components

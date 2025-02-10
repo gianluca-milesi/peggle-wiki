@@ -2,14 +2,23 @@ const connection = require("../data/db.js")
 
 //Index
 function index(req, res) {
-    const sql = `
+    let sql = `
         SELECT characters.*, COALESCE(AVG(reviews.vote), 0) AS avgVote
         FROM characters
         LEFT JOIN reviews ON characters.id = reviews.character_id
-        GROUP BY characters.id;
         `
 
-    connection.query(sql, (err, results) => {
+    const params = []
+
+    if (req.query.search) {
+        sql += ` WHERE characters.name LIKE ? OR characters.power LIKE ?`
+        params.push(`%${req.query.search}%`, `%${req.query.search}%`)
+    }
+
+    sql += ` GROUP BY characters.id`
+
+
+    connection.query(sql, params, (err, results) => {
         results.forEach((character) => {
             character.image = `${process.env.BE_HOST}/CharactersImg/${character.image}`
         })
@@ -26,7 +35,7 @@ function index(req, res) {
 function show(req, res) {
     const id = req.params.id
 
-    const sql = `
+    let sql = `
         SELECT characters.*, COALESCE(AVG(reviews.vote), 0) AS avgVote
         FROM characters
         LEFT JOIN reviews ON characters.id = reviews.character_id

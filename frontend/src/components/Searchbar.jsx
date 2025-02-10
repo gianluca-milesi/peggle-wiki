@@ -1,6 +1,6 @@
-function Searchbar() {
+function Searchbar({ handler = () => { }, query }) {
     return (
-        <div>Searchbar</div>
+        <input className="bg-white text-black" type="text" value={query} onChange={handler} />
     )
 }
 

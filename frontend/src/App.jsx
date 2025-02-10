@@ -2,7 +2,7 @@ import axios from "axios"
 //React router dom
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 //Contexts
-import GlobalContext from "./contexts/globalContext.js"
+import GlobalContext from "./contexts/GlobalContext.js"
 //Hooks
 import { useEffect, useState } from "react"
 //Layouts
@@ -35,7 +35,7 @@ function App() {
 
 
   return (
-    <GlobalContext.Provider value={{ characters }}>
+    <GlobalContext.Provider value={{ characters, setCharacters }}>
       <BrowserRouter>
         <Routes>
           <Route element={<DefaultLayout />}>
