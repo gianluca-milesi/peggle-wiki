@@ -4,10 +4,10 @@ import { Link } from "react-router-dom"
 
 function CardCharacter({ item = {} }) {
 
-    const { image, name, description, power } = item
+    const { id, image, name, description, power } = item
 
     return (
-        <Link to="/">
+        <Link to={`/character/${id}`}>
             <div className="card flex m-2 bg-secondary rounded-full shadow-xl cursor-pointer hover:scale-105 transition-all duration-200">
                 <img className="rounded-full w-40 h-40" src={image} />
                 <div className="card-body p-4 flex flex-col justify-between">

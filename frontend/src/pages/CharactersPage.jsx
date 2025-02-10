@@ -3,6 +3,8 @@ import GlobalContext from "../contexts/globalContext"
 //Hooks
 import { useContext } from "react"
 //Components
+import BackButton from "../components/BackButton"
+import Searchbar from "../components/Searchbar"
 import CardCharacter from "../components/CardCharacter"
 
 
@@ -13,12 +15,12 @@ function CharactersPage() {
 
     return (
         <>
-            {/* <section>
-                <div className="container">
+            <section className="my-5 px-10">
+                <div className="flex justify-between">
                     <BackButton />
                     <Searchbar />
                 </div>
-            </section> */}
+            </section>
 
             <section>
                 <div className="container">
