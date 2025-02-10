@@ -18,7 +18,7 @@ function HomePage() {
                 <HeroHome />
             </section>
 
-            <section>
+            <section className="my-6">
                 <div className="container">
                     <div className="row">
                         {characters && characters.slice(0, 4).map(character => (
