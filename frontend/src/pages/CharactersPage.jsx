@@ -1,8 +1,7 @@
-import axios from "axios"
 //Contexts
 import GlobalContext from "../contexts/GlobalContext"
 //Hooks
-import { useState, useEffect, useContext } from "react"
+import { useContext, useState } from "react"
 //Components
 import BackButton from "../components/BackButton"
 import Searchbar from "../components/Searchbar"
@@ -11,26 +10,17 @@ import CardCharacter from "../components/CardCharacter"
 
 function CharactersPage() {
 
+    const { characters } = useContext(GlobalContext)
     const [search, setSearch] = useState("")
-    const { characters, setCharacters } = useContext(GlobalContext)
 
     function handleSearch(event) {
-        setSearch(event.target.value)
+        setSearch(event.target.value.toLowerCase())
     }
 
-    function fetchCharacters(query = "") {
-        axios.get(`http://localhost:3000/api/characters?search=${query}`)
-            .then((res) => {
-                setCharacters(res.data)
-            })
-            .catch((err) => {
-                console.error(err)
-            })
-    }
-
-    useEffect(() => {
-        fetchCharacters(search)
-    }, [search])
+    const filteredCharacters = characters.filter(character => (
+        character.name.toLowerCase().includes(search) ||
+        character.power.toLowerCase().includes(search)
+    ))
 
 
     return (
@@ -45,9 +35,9 @@ function CharactersPage() {
             <section>
                 <div className="container">
                     <div className="row">
-                        {characters.map((char) => (
-                            <div className="col-6" key={char.id}>
-                                <CardCharacter item={char} />
+                        {filteredCharacters.map((character) => (
+                            <div className="col-6" key={character.id}>
+                                <CardCharacter item={character} />
                             </div>
                         ))}
                     </div>

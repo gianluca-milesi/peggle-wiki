@@ -35,13 +35,13 @@ function App() {
 
 
   return (
-    <GlobalContext.Provider value={{ characters, setCharacters }}>
+    <GlobalContext.Provider value={{ characters }}>
       <BrowserRouter>
         <Routes>
           <Route element={<DefaultLayout />}>
             <Route path="/" element={<HomePage />} />
             <Route path="/characters" element={<CharactersPage />} />
-            <Route path="/:id" element={<DetailCharacterPage />} />
+            <Route path="/characters/:id" element={<DetailCharacterPage />} />
           </Route>
           <Route element={<BlankLayout />}>
             <Route path="*" element={<NotFoundPage />} />

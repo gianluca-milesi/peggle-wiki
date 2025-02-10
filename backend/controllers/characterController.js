@@ -6,19 +6,10 @@ function index(req, res) {
         SELECT characters.*, COALESCE(AVG(reviews.vote), 0) AS avgVote
         FROM characters
         LEFT JOIN reviews ON characters.id = reviews.character_id
+        GROUP BY characters.id;
         `
 
-    const params = []
-
-    if (req.query.search) {
-        sql += ` WHERE characters.name LIKE ? OR characters.power LIKE ?`
-        params.push(`%${req.query.search}%`, `%${req.query.search}%`)
-    }
-
-    sql += ` GROUP BY characters.id`
-
-
-    connection.query(sql, params, (err, results) => {
+    connection.query(sql, (err, results) => {
         results.forEach((character) => {
             character.image = `${process.env.BE_HOST}/CharactersImg/${character.image}`
         })
@@ -44,6 +35,10 @@ function show(req, res) {
         `
 
     connection.query(sql, [id], (err, results) => {
+        results.forEach((character) => {
+            character.image = `${process.env.BE_HOST}/CharactersImg/${character.image}`
+        })
+
         if (err) return res.status(500).json({ message: err.message })
         if (results.length === 0) {
             res.status(400).json({

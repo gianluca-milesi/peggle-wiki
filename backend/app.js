@@ -8,7 +8,9 @@ app.use(cors({ origin: process.env.CORS_ORIGIN }))
 app.use(express.static("public"))
 
 const characterRouter = require("./routers/characterRouter.js")
+const reviewRouter = require("./routers/reviewRouter.js")
 app.use("/api/characters", characterRouter)
+app.use("/api/reviews", reviewRouter)
 
 const notFound = require("./middlewares/notFound.js")
 
