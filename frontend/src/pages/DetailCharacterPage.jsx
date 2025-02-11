@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom"
 import BackButton from "../components/BackButton.jsx"
 import DetailCharacter from "../components/DetailCharacter.jsx"
 import CardReview from "../components/CardReview.jsx"
+import FormAddReview from "../components/FormAddReview.jsx"
 
 
 function DetailCharacterPage() {
@@ -36,7 +37,7 @@ function DetailCharacterPage() {
     return (
         <>
             <section className="my-5">
-                <div className="mb-5 px-5"><BackButton /></div>
+                <div className="mb-5 px-10"><BackButton /></div>
                 <div className="container">
                     {character &&
                         <DetailCharacter item={character} />
@@ -64,6 +65,9 @@ function DetailCharacterPage() {
                 </div>
             </section>
 
+            <section>
+                <FormAddReview />
+            </section>
         </>
     )
 }
