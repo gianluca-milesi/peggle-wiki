@@ -16,7 +16,7 @@ function index(req, res) {
 
 //Show
 function getReviewsByCharacter(req, res) {
-    const id = req.params.id
+    const id = parseInt(req.params.id)
 
     const sql = `SELECT * FROM reviews WHERE character_id = ?`
 

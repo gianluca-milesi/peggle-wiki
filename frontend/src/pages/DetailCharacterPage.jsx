@@ -51,12 +51,14 @@ function DetailCharacterPage() {
                 </div>
                 <div className="container">
                     <div className="row">
-                        {reviews &&
+                        {reviews.length > 0 ? (
                             reviews.map((data) => (
                                 <div className="col-12 mb-4" key={data.id}>
                                     <CardReview item={data} />
                                 </div>
                             ))
+                        ) :
+                            <div>Nessuna recensione...</div>
                         }
                     </div>
                 </div>

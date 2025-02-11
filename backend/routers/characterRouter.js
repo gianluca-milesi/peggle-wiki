@@ -4,6 +4,8 @@ const router = express.Router()
 const characterController = require("../controllers/characterController.js")
 const reviewController = require("../controllers/reviewController.js")
 
+const validateCharacter = require("../middlewares/validateCharacter.js")
+
 
 //Index
 router.get("/", characterController.index)
@@ -15,7 +17,7 @@ router.get("/:id", characterController.show)
 router.get("/:id/reviews", reviewController.getReviewsByCharacter)
 
 //Store
-router.post("/", characterController.store)
+router.post("/", validateCharacter, characterController.store)
 
 //Destroy
 router.delete("/:id", characterController.destroy)

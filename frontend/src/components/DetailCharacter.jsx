@@ -1,10 +1,13 @@
+import placeholderImg from "../../public/placeholder.svg"
+
+
 function DetailCharacter({ item = {} }) {
 
-    const { id, image, name, description, power } = item
+    const { image, name, description, power } = item
 
     return (
         <div className="card flex">
-            <img src={image} />
+            <img className="w-50 h-50" src={image || placeholderImg} />
             <div className="card-body">
                 <div className="card-body p-4 flex flex-col justify-between">
                     <div className="description flex flex-col">

@@ -24,13 +24,13 @@ function index(req, res) {
 
 //Show
 function show(req, res) {
-    const id = req.params.id
+    const id = parseInt(req.params.id)
 
     let sql = `
         SELECT characters.*, COALESCE(AVG(reviews.vote), 0) AS avgVote
         FROM characters
         LEFT JOIN reviews ON characters.id = reviews.character_id
-        WHERE character_id = ?
+        WHERE characters.id = ?
         GROUP BY characters.id;
         `
 
@@ -39,9 +39,11 @@ function show(req, res) {
             character.image = `${process.env.BE_HOST}/CharactersImg/${character.image}`
         })
 
-        if (err) return res.status(500).json({ message: err.message })
+        if (err) {
+            res.status(500).json({ message: err.message })
+        }
         if (results.length === 0) {
-            res.status(400).json({
+            res.status(404).json({
                 error: "Character not found",
                 message: "Personaggio non trovato"
             })
@@ -54,7 +56,17 @@ function show(req, res) {
 
 //Store
 function store(req, res) {
+    const { image, name, description, power } = req.body
 
+    const sql = `INSERT INTO characters (image, name, description, power) VALUES (?, ?, ?, ?)`
+
+    connection.query(sql, [image, name, description, power], (err, results) => {
+        if (err) {
+            res.status(500).json({ message: err.message })
+        }
+
+        res.status(201).json({ message: "Character added" })
+    })
 }
 
 //Destroy
