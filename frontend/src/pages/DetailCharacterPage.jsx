@@ -46,14 +46,14 @@ function DetailCharacterPage() {
 
             <section className="my-5">
                 <div className="reviews-headline flex justify-between px-5">
-                    <h2>Recensioni</h2>
+                    <h2 className="text-2xl font-semibold">Recensioni</h2>
                     <p>{character.avgVote}</p>
                 </div>
                 <div className="container">
                     <div className="row">
                         {reviews &&
                             reviews.map((data) => (
-                                <div className="col-6 mb-4" key={data.id}>
+                                <div className="col-12 mb-4" key={data.id}>
                                     <CardReview item={data} />
                                 </div>
                             ))
