@@ -53,7 +53,7 @@ function DetailCharacterPage() {
                     <div className="row">
                         {reviews &&
                             reviews.map((data) => (
-                                <div className="col-6" key={data.id}>
+                                <div className="col-6 mb-4" key={data.id}>
                                     <CardReview item={data} />
                                 </div>
                             ))
