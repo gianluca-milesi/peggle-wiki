@@ -13,6 +13,7 @@ import NotFoundPage from "./pages/NotFoundPage.jsx"
 import HomePage from "./pages/HomePage"
 import CharactersPage from "./pages/CharactersPage.jsx"
 import DetailCharacterPage from "./pages/DetailCharacterPage.jsx"
+import CreateCharacterPage from "./pages/CreateCharacterPage.jsx"
 
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/characters" element={<CharactersPage />} />
             <Route path="/characters/:id" element={<DetailCharacterPage />} />
+            <Route path="/create" element={<CreateCharacterPage />} />
           </Route>
           <Route element={<BlankLayout />}>
             <Route path="*" element={<NotFoundPage />} />
