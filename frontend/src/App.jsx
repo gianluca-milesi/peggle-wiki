@@ -36,7 +36,7 @@ function App() {
 
 
   return (
-    <GlobalContext.Provider value={{ characters }}>
+    <GlobalContext.Provider value={{ characters, fetchCharacters }}>
       <BrowserRouter>
         <Routes>
           <Route element={<DefaultLayout />}>

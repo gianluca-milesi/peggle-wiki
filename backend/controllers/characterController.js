@@ -2,7 +2,7 @@ const connection = require("../data/db.js")
 
 //Index
 function index(req, res) {
-    let sql = `
+    const sql = `
         SELECT characters.*, COALESCE(AVG(reviews.vote), 0) AS avgVote
         FROM characters
         LEFT JOIN reviews ON characters.id = reviews.character_id
@@ -71,7 +71,24 @@ function store(req, res) {
 
 //Destroy
 function destroy(req, res) {
+    const id = parseInt(req.params.id)
 
+    let sql = `DELETE FROM characters WHERE characters.id = ?`
+
+    connection.query(sql, [id], (err, results) => {
+        if (err) {
+            res.status(500).json({ message: err.message })
+        }
+
+        if (results.length === 0) {
+            res.status(404).json({
+                error: "Character not found",
+                message: "Personaggio non trovato"
+            })
+        }
+
+        res.status(200).json({ message: "Character removed" })
+    })
 }
 
 module.exports = { index, show, store, destroy }

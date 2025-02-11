@@ -1,6 +1,9 @@
 import axios from "axios"
+//Contexts
+import GlobalContext from "../contexts/GlobalContext"
 //Hooks
-import { useState } from "react"
+import { useState, useContext } from "react"
+import { useNavigate } from "react-router-dom"
 
 
 const initialFormData = {
@@ -12,6 +15,8 @@ const initialFormData = {
 function FormAddReview() {
 
     const [formData, setFormData] = useState(initialFormData)
+    const { fetchCharacters } = useContext(GlobalContext)
+    const navigate = useNavigate()
 
     function handleFormData(event) {
         const { value, name: propName } = event.target
@@ -34,6 +39,8 @@ function FormAddReview() {
         axios.post(`http://localhost:3000/api/characters`, data)
             .then((res) => {
                 setFormData(initialFormData)
+                fetchCharacters()
+                navigate("/characters")
             })
             .catch((err) => {
                 console.error(err)
