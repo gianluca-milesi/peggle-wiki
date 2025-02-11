@@ -65,8 +65,11 @@ function DetailCharacterPage() {
                 </div>
             </section>
 
-            <section>
-                <FormAddReview />
+            <section className="my-5">
+                <h2 className="text-2xl font-semibold text-center mb-2.5">Aggiungi una recensione</h2>
+                <div className="container">
+                    <FormAddReview id={id} fetch={fetchCharacterData} />
+                </div>
             </section>
         </>
     )
