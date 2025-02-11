@@ -31,6 +31,16 @@ function getReviewsByCharacter(req, res) {
 
 //Store
 function store(req, res) {
+    const { character_id, name, review, vote } = req.body
+
+    const sql = `INSERT INTO reviews (character_id, name, review, vote) VALUES (?, ?, ?, ?)`
+
+    connection.query(sql, [character_id, name, review, vote], (err, results) => {
+        if (err) {
+            res.status(500).json({ message: err.message })
+        }
+        res.status(201).json({ message: "Review added" })
+    })
 
 }
 

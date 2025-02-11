@@ -6,6 +6,7 @@ const cors = require("cors")
 app.use(cors({ origin: process.env.CORS_ORIGIN }))
 
 app.use(express.static("public"))
+app.use(express.json())
 
 const characterRouter = require("./routers/characterRouter.js")
 const reviewRouter = require("./routers/reviewRouter.js")
