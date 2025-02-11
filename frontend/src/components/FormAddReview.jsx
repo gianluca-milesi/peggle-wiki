@@ -16,7 +16,6 @@ function FormAddReview({ id, fetch = () => { } }) {
 
     function handleFormData(event) {
         const { value, name: propName } = event.target
-        console.log(value)
 
         setFormData({
             ...formData,
